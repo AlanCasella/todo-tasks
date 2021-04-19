@@ -1,0 +1,19 @@
+.homeDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.homeDiv span{
+  color: black;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.homeDiv a{
+  color: blue;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+}

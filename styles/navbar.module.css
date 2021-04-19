@@ -1,0 +1,23 @@
+.navbarDivContainer {
+    display: flex;
+    background-color: black;    
+    justify-content: space-evenly;
+
+}
+
+.navbarDiv{
+    width: 100%;  
+}
+
+.navbarUl{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbarUl li{
+    list-style: none;
+    color: white;
+    border: outset white 5px;
+    border-radius: 10% / 50%;
+}
+

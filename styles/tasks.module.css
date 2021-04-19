@@ -1,0 +1,95 @@
+.divTasksCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.divTasksTarjeta {
+    background-color: red;
+    width: 250px;
+    height: 250px;
+    display: grid;
+    grid-template-areas: repeat(3);
+    max-height: 400px;
+    margin: 30px;
+    margin-bottom: 50px;
+
+}
+
+.divTasksTitulo {
+    height: 100px;
+    background-color: rgb(136, 220, 231);
+    justify-content: center;
+    
+    border: solid black 3px;
+}
+
+.divTasksTitulo h2{
+    text-align: center;
+    
+}
+
+.divTasksTitulo h2:hover{
+    cursor: pointer;
+    text-decoration: underline;    
+}
+
+.divTasksDescripcion {
+    height: 180px;
+    background-color:rgb(208, 234, 236);
+    
+    border: solid black 3px;
+}
+
+.divTasksDescripcion h5{
+    text-align: center;
+}
+
+
+.divTasksButtons {
+    display: flex;
+    border: solid black 2px;
+}
+
+.TasksButtons {
+    width: 50%;
+    background-color: #f0cdea;
+    border: solid black 1px;
+    padding: 1px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.TasksButtonConfirm {
+    width: 100%;
+    background-color: #f0cdea;
+    border: solid black 1px;
+    padding: 1px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.TaskForm {
+    font-size: 18px;
+    text-align: center;
+    border: solid black 2px;
+    background-color:rgb(179, 172, 170);
+}
+
+.TaskInputTitle{
+    height: 93px;
+    width: 256px;
+    resize: none;
+}
+
+.TaskInputDescription {
+    height: 180px;
+    width: 256px;
+    resize: none;
+}
