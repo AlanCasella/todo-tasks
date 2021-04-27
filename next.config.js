@@ -1,5 +1,5 @@
 module.exports = {
     env: {
-        URL: process.env.URL
+        URL: process.env.VERCEL_URL
     }
   }
