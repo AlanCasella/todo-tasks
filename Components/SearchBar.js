@@ -1,23 +1,34 @@
-import React from "react";
-import s from "../styles/searchbar.module.css"
+import React, {useState} from "react";
+import FormControl from "@material-ui/core/FormControl"
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+
+
 
 const SearchBar = (props) => {
+  const [input, setInput] = useState("All")
 
-    function onSubmit(e) {
-        props.search(e.target.value)
+
+    function handleChange(e) {
+      setInput(e.target.value)
+      props.search(e.target.value)
     }
 
   return (
-    <div className={s.divSearchBar}>
-      <form id={s.TodosForm} onChange={(e) => onSubmit(e)}>
-        <label htmlFor="Todos">Filter by Completed</label>
-        <select name="Todos" id="Todos" form="TodosForm">
-          <option value="All">All</option>
-          <option value="Completed">Completed</option>
-          <option value="Pending">Pending</option>
-        </select>
-      </form>
-    </div>
+    <FormControl>
+        <InputLabel id="demo-simple-select-label">Filter by</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={input}
+          onChange={(e) => handleChange(e)}
+        >
+          <MenuItem value={"Completed"}>Completed</MenuItem>
+          <MenuItem value={"Pending"}>Pending</MenuItem>
+          <MenuItem value={"All"}>Show All</MenuItem>
+        </Select>
+        </FormControl>
   );
 };
 

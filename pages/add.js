@@ -1,54 +1,75 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useRouter } from 'next/router'
-import s from "../styles/tasks.module.css";
+import { useRouter } from "next/router";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => {
+  return {
+    card: {
+      marginTop: `calc(${theme.mixins.toolbar.minHeight} * 2)`,
+      marginLeft: "40%",
+      width: "20%"
+    },
+    cardAction: {
+      justifyContent: "center",
+    },
+    title: {
+      display: "block",
+      width: "98%"
+    },
+    description: {
+      display: "block",
+    },
+    button: {
+      width: "98%"
+    }
+  };
+});
 
 const add = () => {
+  const classes = useStyles();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter();
-  const URL = process.env.URL
+  const URL = process.env.URL;
 
-  function handleInput(e) {
-    if (e.target.name === "title") {
-      setTitle(e.target.value);
-    } else if (e.target.name === "description") {
-      setDescription(e.target.value);
-    }
-  }
-
-  async function handleAdd(e) {
-      e.preventDefault()
+  async function handleSubmit(e) {
+    e.preventDefault();
     await axios.post(`https://${URL}/api/tasks/list`, {title, description})
-    router.push("/tasks")
+    // await axios.post(`http://${URL}/api/tasks/list`, { title, description });
+    router.push("/tasks");
   }
 
   return (
-    <div className={s.divTasksTarjeta}>
-      <form>
-        <div className={s.divTasksTitulo}>
-          <textarea
-            className={s.TaskInputTitle}
-            type="textarea"
-            name="title"
-            onChange={(e) => handleInput(e)}
-            placeholder="Enter title"
-          ></textarea>
-        </div>
-        <div className={s.divTasksDescripcion}>
-          <textarea
-            className={s.TaskInputDescription}
-            type="textarea"
-            name="description"
-            onChange={(e) => handleInput(e)}
-            placeholder="Enter description"
-          ></textarea>
-        </div>
-        <div className={s.divTasksButtons}>
-          <button className={s.TasksButtonConfirm} onClick={(e) => handleAdd(e)}>Add Task</button>
-        </div>
-      </form>
-    </div>
+    <Card className={classes.card} variant="outlined">
+      <CardActions className={classes.cardAction}>
+        <form noValidate autoComplete="off" onSubmit={(e) => handleSubmit(e)}>
+          <TextField
+            label="Title"
+            variant="outlined"
+            required
+            onChange={(e) => setTitle(e.target.value)}
+            margin="dense"
+            className={classes.title}
+          />
+          <TextField
+            label="Description"
+            variant="outlined"
+            required
+            multiline
+            rows={6}
+            onChange={(e) => setDescription(e.target.value)}            
+            margin="dense"
+            className={classes.description}
+          />
+          <Button type="submit" className={classes.button} variant="contained" color="primary">Add</Button>
+        </form>
+      </CardActions>
+    </Card>
   );
 };
 
